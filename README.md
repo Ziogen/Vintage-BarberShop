@@ -1,2 +1,0 @@
-# Vintage-BarberShop
-Barbershop services
