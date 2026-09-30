@@ -7,6 +7,7 @@ const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
 const featureGrid = document.getElementById("featureGrid");
 const navBar = document.getElementById("nav");
+const siteHeader = document.getElementById(".site.header");
 
 const services = [
   {
@@ -61,6 +62,17 @@ const updateHeadingText = (newText) => {
   heading.textContent = newText;
 };
 
+const handleHeaderOnScroll = () => {
+  if (!siteHeader) return;
+  if (window.scrollY > 10) {
+    siteHeader.classList.add("is-scrolled");
+  } else {
+    siteHeader.classList.remove("is-scrolled");
+  }
+};
+
+
+
 setCurrentYear();
 
 if (menuBtn) {
@@ -90,6 +102,13 @@ if (callBtn) {
     } else {
       updateHeadingText("Call feature coming next!");
     }
+  });
+}
+
+window.addEventListener("Scroll", handleHeaderOnScroll);
+if (callBtn) {
+  callBtn.addEventListener("click", () => {
+    window.location.href = `tel:${shopInfor.phoneRaw}`;
   });
 }
 
@@ -147,3 +166,4 @@ const renderNavigation = () => {
 renderFeatures();
 renderFeaturesMap();
 renderNavigation();
+handleHeaderOnScroll();
